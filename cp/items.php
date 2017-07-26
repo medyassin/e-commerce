@@ -87,7 +87,7 @@
 
 								// Case Item is Not Approved yet ==> Show Btn of approvation
 								if ($item['Approve'] == 0) {
-									echo "<a href='?do=Approve&userid=" . $item['Item_ID'] . "'" . "class='btn btn-success activate'><i class='fa fa-check'></i>Approve</a>";
+									echo "<a href='?do=Approve&itemid=" . $item['Item_ID'] . "'" . "class='btn btn-success activate'><i class='fa fa-check'></i>Approve</a>";
 								}
 								
 								echo "</td>";
@@ -667,13 +667,35 @@
 
 		/*
 		==========================
-		|  ACTIVATE USERS PAGE   |
+		|  APPROVE ITEMS PAGE   |
 		=========================
 		*/
 
 
 		} elseif($do == 'Approve') {
+			// approve items Page
+			echo '<div class="ehead"> <h1 class="text-center">Approve Items Page</h1></div>';
+			echo '<div class="container">';
 
+			$itemid = isset($_GET['itemid']) && is_numeric($_GET['itemid']) ? intval($_GET['itemid']) : 0;
+
+			$check = checkItem('Item_ID', 'items', $itemid);
+
+			if ($check > 0 ) {
+				
+				$stmt = $con->prepare("UPDATE items SET Approve = 1 WHERE Item_ID = ?");
+				$stmt->execute(array($itemid));
+
+				// Echo Sucess message with the number of records
+				$theMsg = '<div class="alert alert-success">' . $stmt->rowCount() . ' Records Activated' . '</div>';
+				redirectHome($theMsg,'back',2);
+
+			} else {
+				$theMsg = '<div class="alert alert-success">Items(s) not found!</div>';
+				redirectHome($theMsg, 'items.php',4);
+			}
+
+			echo '</div>';
 
 		}
 
