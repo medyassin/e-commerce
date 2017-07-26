@@ -170,6 +170,16 @@ a:hover {
 	margin-top: 30px;
 }
 
+.latest .toggle-info {
+	color: #999;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out
+}
+
+.latest .toggle-info:hover {
+	color: #444;
+}
+
 .latest .panel-body {
 	padding: 10px 0;
 }

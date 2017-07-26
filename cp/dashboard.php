@@ -84,7 +84,11 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<i class="fa fa-tag"></i> Latest <?php echo $latestItems?> latest Items
+							<i class="fa fa-tag"></i>
+							Latest <?php echo $latestItems?> latest Items
+							<span class="toggle-info pull-right">
+								<i class="fa fa-plus"></i>
+							</span>
 						</div>
 						<div class="panel-body">
 							<ul class="list-unstyled latest-users">
@@ -113,7 +117,11 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<i class="fa fa-user"></i> Latest <?php echo $latestUsers?> registred users
+							<i class="fa fa-user"></i> 
+							Latest <?php echo $latestUsers?> registred users
+							<span class="toggle-info pull-right">
+								<i class="fa fa-plus"></i>
+							</span>
 						</div>
 						<div class="panel-body">
 							<ul class="list-unstyled latest-users">
