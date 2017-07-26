@@ -78,6 +78,13 @@
 											    echo "<i class='fa fa-edit'></i>";
 											    echo "<a href='items.php?do=Edit&itemid=" . $item["Item_ID"] . "'> Edit</a>";
 											echo "</span>";
+											if ($item['Approve'] == 0) {
+											echo "<span class='btn btn-success pull-right activateBtn'>";
+											    echo "<i class='fa fa-check-circle'></i>";
+											    echo "<a href='items.php?do=Approve&itemid=" . $item["Item_ID"] . "'> Approve</a>";
+											echo "</span>";
+											}
+
 										echo "</li>";
 									}
 								?>
@@ -101,7 +108,7 @@
 											    echo "<a href='users.php?do=Edit&userid=" . $user["UserID"] . "'> Edit</a>";
 											echo "</span>";
 											if ($user['RegStatus'] == 0) {
-												echo "<span class='btn btn-success pull-right activateBtn'>";
+											echo "<span class='btn btn-success pull-right activateBtn'>";
 											    echo "<i class='fa fa-check-circle'></i>";
 											    echo "<a href='users.php?do=Activate&userid=" . $user["UserID"] . "'> Activate</a>";
 											echo "</span>";
