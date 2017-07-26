@@ -36,26 +36,44 @@
 			<div class="row">
 				<div class='col-md-3 col-sm-6'>
 					<div class='stat st-members'>
-						Total Members
+						<i class="fa fa-user-circle"></i>
+						<div class="info">
+							Total Members
 						<span><a href="users.php"><?php echo countItems('UserID', 'users', 'GroupeID != 1') ?></a></span>
+						</div>
 					</div>
 				</div>
 				<div class='col-md-3 col-sm-6'>
 					<div class='stat st-pending'>
-						Pending Members
-						<span><a href="users.php?do=Manage&page=Pending"><?php echo countItems('UserID', 'users', 'RegStatus =0')?></a></span>
+						<i class="fa fa-user-plus"></i>
+						<div class="info">
+							Pending Members
+							<span>
+								<a href="users.php?do=Manage&page=Pending"><?php echo countItems('UserID', 'users', 'RegStatus =0')?>
+								</a>
+							</span>
+						</div>
 					</div>
 				</div>
 				<div class='col-md-3 col-sm-6'>
 					<div class='stat st-items'>
+						<i class="fa fa-tag"></i>
+						<div class="info">
 						Total Items
-						<span><a href='items.php?do=Manage'><?php echo countItems('Item_ID', 'items', null) ?></a></span>
+							<span>
+							<a href='items.php?do=Manage'><?php echo countItems('Item_ID', 'items', null) ?>
+							</a>
+						</span>
+						</div>
 					</div>
 				</div>
 				<div class='col-md-3 col-sm-6'>
 					<div class='stat st-comments'>
+					<i class="fa fa-comments"></i>
+					<div class="info">
 						Total Comments
-						<span>3500</span>
+						<span>150</span>
+					</div>
 					</div>
 				</div>
 

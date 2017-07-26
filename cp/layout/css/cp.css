@@ -135,6 +135,20 @@ a:hover {
 	font-weight: bold;
 	border-radius: 10px;
 	color: #FFF;
+	position: relative;
+	overflow: hidden;
+}
+
+.home-stats .stat .info {
+	float: right;
+}
+
+.home-stats .stat i {
+	font-size: 90px;
+    left: 20px;
+    position: absolute;
+    /* top: 25px; */
+    line-height: 107px;
 }
 
 .home-stats .stat a {
