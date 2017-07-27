@@ -17,6 +17,7 @@
         <li><a href="cats.php"><i class="fa fa-shopping-basket"></i><?php echo " " . lang('CATEGORIES')?></a></li>
         <li><a href="items.php"><i class="fa fa-sliders"></i><?php echo " " . lang('ITEMS')?></a></li>
         <li><a href="users.php"><i class="fa fa-users"></i><?php echo " " . lang('MEMEBERS')?></a></li>
+        <li><a href="comments.php"><i class="fa fa-comments"></i><?php echo " " . lang('COMMENTS')?></a></li>
         <li><a href="#"><i class="fa fa-area-chart"></i><?php echo " " . lang('STATISTICS')?></a></li>
         <li><a href="#"><i class="fa fa-file-text-o"></i><?php echo " " . lang('LOGS')?></a></li>
       </ul>

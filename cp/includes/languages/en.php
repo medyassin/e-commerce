@@ -11,7 +11,8 @@
 			'ITEMS'        => 'Items',
 			'MEMEBERS'     => 'Users',
 			'STATISTICS'   => 'Statistics',
-			'LOGS'         => 'logs'
+			'LOGS'         => 'logs',
+			'COMMENTS'     => 'Comments'
 		);
 
 		return $lang[$phrase];
