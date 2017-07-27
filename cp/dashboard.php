@@ -30,7 +30,9 @@
 		$theLatestItems = getLatest('*','items', 'Item_ID', $latestItems);
 
 		?>
-		<div class="ehead"><h1 class="text-center">Dashboard Page</h1></div>
+		<div class="container">
+			<div class="ehead"><h1 class="text-center">Dashboard Page</h1></div>
+		</div>
 
 		<div class="container home-stats text-center">
 			<div class="row">
@@ -38,7 +40,7 @@
 					<div class='stat st-members'>
 						<i class="fa fa-user-circle"></i>
 						<div class="info">
-							Total Members
+							<div>Total Members</div>
 						<span><a href="users.php"><?php echo countItems('UserID', 'users', 'GroupeID != 1') ?></a></span>
 						</div>
 					</div>
@@ -47,7 +49,7 @@
 					<div class='stat st-pending'>
 						<i class="fa fa-user-plus"></i>
 						<div class="info">
-							Pending Members
+							<div>Pending Members</div>
 							<span>
 								<a href="users.php?do=Manage&page=Pending"><?php echo countItems('UserID', 'users', 'RegStatus =0')?>
 								</a>
@@ -59,7 +61,7 @@
 					<div class='stat st-items'>
 						<i class="fa fa-tag"></i>
 						<div class="info">
-						Total Items
+						<div>Total Items</div>
 							<span>
 							<a href='items.php?do=Manage'><?php echo countItems('Item_ID', 'items', null) ?>
 							</a>
@@ -71,7 +73,7 @@
 					<div class='stat st-comments'>
 					<i class="fa fa-comments"></i>
 					<div class="info">
-						Total Comments
+						<div>Total Comments</div>
 						<span><a href="comments.php"><?php echo countItems('c_id', 'comments', null) ?></a></span>
 					</div>
 					</div>
