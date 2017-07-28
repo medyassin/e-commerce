@@ -43,12 +43,13 @@
 										users 
 									ON
 										users.UserID = items.User_ID
-
 								"); 
 
 			$stmt->execute(); // Execute the statement
 
 			$items = $stmt->fetchAll(); // Fetch all data
+
+			if (!empty($items)) {
 
 		?>
 			<!-- HEADING OF THE PAGE -->
@@ -101,7 +102,16 @@
 				</div>
 				<a class="btn btn-sm btn-primary" href="?do=Add"><i class='fa fa-plus'></i> new item</a>
 			</div>
-		
+		<?php 
+			} else {
+
+			echo '<div class="container">';
+				$theMsg = "<div class='alert alert-info'> There is no items</div>";
+				redirectHome($theMsg, 'index.php', 2);
+			echo '</div>';
+
+			}
+		?>
 		<?php
 		/*
 		========================

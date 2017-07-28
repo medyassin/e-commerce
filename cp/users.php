@@ -38,6 +38,8 @@
 			$stmt->execute(); // Execute the statement
 			$rows = $stmt->fetchAll(); // Fetch all data
 
+			if(!empty($rows)) {
+
 		?>
 			<!-- HEADING OF THE PAGE -->
 			<div class="ehead"> <h1 class="text-center">Users Manage Page</h1></div>
@@ -90,7 +92,14 @@
 				</div>
 				<a class="btn btn-sm btn-primary" href="?do=Add"><i class='fa fa-plus'></i> new user</a>
 			</div>
-		
+		<?php } else {
+
+			echo '<div class="container">';
+				$theMsg = "<div class='alert alert-info'> There is no users</div>";
+				redirectHome($theMsg, 'index.php', 2);
+			echo '</div>';
+
+		} ?>
 		<?php
 		
 		/*

@@ -13,8 +13,9 @@
 
 		// Start Dashboard Page // 
 
-		include 'init.php';
 		$pageTitle = 'Dashboard page'; // Dashboard Page Title
+
+		include 'init.php';
 
 		// Dynamique latest users variable
 
@@ -155,10 +156,11 @@
 									foreach($theLatest as $user) {
 										echo "<li>";
 											echo $user['Username'];
+											echo "<a href='users.php?do=Edit&userid=" . $user["UserID"] . "'>";
 											echo "<span class='btn btn-info pull-right'>";
-											    echo "<i class='fa fa-edit'></i>";
-											    echo "<a href='users.php?do=Edit&userid=" . $user["UserID"] . "'> Edit</a>";
+											    			echo "<i class='fa fa-edit'></i> Edit";
 											echo "</span>";
+											echo "</a>";
 											if ($user['RegStatus'] == 0) {
 											echo "<span class='btn btn-success pull-right activateBtn'>";
 											    echo "<i class='fa fa-check-circle'></i>";

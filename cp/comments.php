@@ -27,7 +27,8 @@
 		*/
 
 		if ($do == 'Manage') {
-
+			echo '<div class="ehead"> <h1 class="text-center">Comments Manage Page</h1></div>';
+			echo '<div class="container">';
 
 			$stmt = $con->prepare("SELECT comments.*, items.Name AS item_name, users.Username AS user_name
 									FROM comments
@@ -38,10 +39,11 @@
 			$stmt->execute(); // Execute the statement
 			$rows = $stmt->fetchAll(); // Fetch all data
 
+
+			if (!empty($rows)) {
+
 		?>
 			<!-- HEADING OF THE PAGE -->
-			<div class="ehead"> <h1 class="text-center">Comments Manage Page</h1></div>
-			<div class="container">
 				<div class="table-responsive">
 					<table class="main-table text-center table table-bordered">
 						<tr>
@@ -88,7 +90,15 @@
 					</table>
 				</div>
 			</div>
-		
+
+		<?php 
+			} else {
+				echo '<div class="container">';
+					$theMsg = "<div class='alert alert-info'> There is no comments</div>";
+					redirectHome($theMsg, 'index.php', 2);
+				echo '</div>';
+			}
+		?>
 		<?php
 
 		/*
