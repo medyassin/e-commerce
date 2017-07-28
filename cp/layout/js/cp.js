@@ -77,13 +77,13 @@ $(function() {
 
 	// Show Comments Btn on hover
 
-	$('.user-n').hover(function (){
-		$(this).children('.btns').animate({
+	$('.comment-box').hover(function (){
+		$(this).children('.user-n').children('.btns').animate({
 			display: 'block',
 			left: '2px'
 		}, 400);
 	}, function () {
-		$(this).children('.btns').animate({
+		$(this).children('.user-n').children('.btns').animate({
 			display: 'none',
 			left: '-80px'
 		}, 400);

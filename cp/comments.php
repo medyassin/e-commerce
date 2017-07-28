@@ -35,17 +35,18 @@
 									INNER JOIN items 
 									ON items.Item_ID  = comments.c_item_id
 									INNER JOIN users 
-									ON users.UserID = comments.c_user_id");
+									ON users.UserID = comments.c_user_id
+									ORDER BY c_id DESC");
 			$stmt->execute(); // Execute the statement
 			$rows = $stmt->fetchAll(); // Fetch all data
 
 
 			if (!empty($rows)) {
 
-		?>
+			?>
 			<!-- HEADING OF THE PAGE -->
 				<div class="table-responsive">
-					<table class="main-table text-center table table-bordered">
+					<table class="main-table text-center table">
 						<tr>
 							<td>#ID</td>
 							<td>Comment</td>
@@ -91,14 +92,14 @@
 				</div>
 			</div>
 
-		<?php 
+			<?php 
 			} else {
 				echo '<div class="container">';
 					$theMsg = "<div class='alert alert-info'> There is no comments</div>";
 					redirectHome($theMsg, 'index.php', 2);
 				echo '</div>';
 			}
-		?>
+			?>
 		<?php
 
 		/*

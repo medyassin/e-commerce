@@ -34,7 +34,7 @@
 				$query = 'AND RegStatus =0';
 			}
 
-			$stmt = $con->prepare("SELECT * FROM users WHERE GroupeID != 1 $query"); // Select all Users Expect Administrators
+			$stmt = $con->prepare("SELECT * FROM users WHERE GroupeID != 1 $query ORDER BY UserID DESC"); // Select all Users Expect Administrators
 			$stmt->execute(); // Execute the statement
 			$rows = $stmt->fetchAll(); // Fetch all data
 
@@ -45,7 +45,7 @@
 			<div class="ehead"> <h1 class="text-center">Users Manage Page</h1></div>
 			<div class="container">
 				<div class="table-responsive">
-					<table class="main-table text-center table table-bordered">
+					<table class="main-table text-center table">
 						<tr>
 							<td>#ID</td>
 							<td>Username</td>

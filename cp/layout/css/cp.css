@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	outline: none;
 	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -77,15 +78,16 @@ a:hover {
 	border-radius: 0;
 }
 
-.navbar-inverse {
-	background-color: #3f3f3f;
-}
-.navbar-inverse .navbar-brand {
-	color: #ecebeb;
+.navbar {
+	background-color: #af71cf;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: #ecebeb;
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-brand:hover {
+    color: #FFF;
+    text-transform: uppercase;
 }
 
 .form-control {
@@ -200,6 +202,7 @@ a:hover {
     background-color: #ffffff;
     font-weight: bold;
     border:none;
+    text-transform: uppercase;
 }
 
 .latest-users {
@@ -392,9 +395,9 @@ a:hover {
 }
 
 .main-table .btn {
-    padding: 2px 15px;
+    padding: 2px 10px;
     font-size: 12px;
-    border-radius: 50px;
+    border-radius: 3px;
 }
 
 
@@ -408,14 +411,14 @@ a:hover {
 }
 
 tbody tr:nth-child(even) td{
-	background-color: #EEE
+	background-color: #f4f4f4
 }
 .main-table td:last-child {
 	padding-left: 0;
 	padding-right: 0;
 }
 .main-table tr:first-of-type td { /* We can use thead */
-	background-color: #7f7e7e;
+	background-color: #967fcb;
 	color: #FFF;
 }
 

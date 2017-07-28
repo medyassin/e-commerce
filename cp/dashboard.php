@@ -21,6 +21,7 @@
 
 		$latestUsers = 7;
 		$latestItems = 7;
+		$latestComments = 7;
 
 		// Get Latest Users using getLatest() function
 
@@ -35,7 +36,9 @@
 		$commentsL = $con->prepare("SELECT comments.*, users.Username AS user_name
 								FROM comments
 								INNER JOIN users 
-								ON users.UserID = comments.c_user_id");
+								ON users.UserID = comments.c_user_id
+								ORDER BY c_id DESC
+								LIMIT $latestComments");
 		$commentsL->execute(); // Execute the statement
 		$comments = $commentsL->fetchAll(); // Fetch all data
 		?>
@@ -109,7 +112,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-tag"></i>
-							Latest <?php echo $latestItems?> latest Items
+							Latest <?php echo $latestItems?> Added Items
 							<span class="toggle-info pull-right">
 								<i class="fa fa-plus"></i>
 							</span>
@@ -182,7 +185,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-comments"></i>
-							LATEST COMMENTS
+							LATEST <?php echo $latestComments?> COMMENTS
 							<span class="toggle-info pull-right">
 								<i class="fa fa-plus"></i>
 							</span>
@@ -192,7 +195,7 @@
 								foreach($comments as $comment) {
 								
 									echo '<div class="comment-box">';
-										echo '<div class="user-n"><span>' . $comment['user_name'] . '</span>';
+										echo '<div class="user-n"><a href="users.php?do=Edit&userid='. $comment['c_user_id'] .'"><span>' . $comment['user_name'] . '</span></a>';
 										?>
 											<div class="btns">
 												<a href="comments.php?do=Edit&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-edit"></i></a>

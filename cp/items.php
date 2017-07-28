@@ -43,6 +43,7 @@
 										users 
 									ON
 										users.UserID = items.User_ID
+									ORDER BY Item_ID DESC
 								"); 
 
 			$stmt->execute(); // Execute the statement
@@ -54,7 +55,7 @@
 		?>
 			<!-- HEADING OF THE PAGE -->
 				<div class="table-responsive">
-					<table class="main-table text-center table table-bordered">
+					<table class="main-table text-center table">
 						<tr>
 							<td>#ID</td>
 							<td>Name</td>
