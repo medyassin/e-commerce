@@ -29,10 +29,22 @@
 
 		$theLatestItems = getLatest('*','items', 'Item_ID', $latestItems);
 
+		// Latest Comments
+
+		$commentsL = $con->prepare("SELECT comments.*, users.Username AS user_name
+								FROM comments
+								INNER JOIN users 
+								ON users.UserID = comments.c_user_id");
+		$commentsL->execute(); // Execute the statement
+		$comments = $commentsL->fetchAll(); // Fetch all data
 		?>
+
+
 		<div class="container">
 			<div class="ehead"><h1 class="text-center">Dashboard Page</h1></div>
 		</div>
+
+		<!-- START STATS -->
 
 		<div class="container home-stats text-center">
 			<div class="row">
@@ -81,8 +93,17 @@
 
 			</div>
 		</div>
+
+		<!-- END STATS -->
+
+
+		<!-- START LATEST ITEMS & USERS & COMMENTS -->
+
 		<div class="container latest">
 			<div class="row">
+
+				<!-- LATEST ITEMS -->
+
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -116,6 +137,9 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- LATEST USERS -->
+
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -149,7 +173,37 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- START LATEST COMMENTS -->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-comments"></i>
+							LATEST COMMENTS
+							<span class="toggle-info pull-right">
+								<i class="fa fa-plus"></i>
+							</span>
+						</div>
+						<div class="panel-body">
+							<?php
+								foreach($comments as $comment) {
+								
+									echo '<div class="comment-box">';
+										echo '<span class="user-n">' . $comment['user_name'] . '</span>';
+										echo '<p class="user-c">' . $comment['c'] . '<p>' ;
+									echo '</div>';
+								}
+							?>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- END LATEST COMMETNS -->
 		</div>
+
+		<!-- END LATEST ITEMS & USERS & COMMENTS -->
 		<?php
 
 		// END DASHBOARD PAGE //

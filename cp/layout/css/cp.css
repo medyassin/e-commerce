@@ -232,6 +232,44 @@ a:hover {
 	margin-right: 10px;
 }
 
+.latest .comment-box {
+	margin: 5px 0 10px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.latest .comment-box .user-n {
+	margin-right: 1%;
+	width: 21%;
+	overflow: hidden;
+	position: relative;
+	top: 7px;
+	font-weight: bold;
+	left: 5px;
+	cursor: pointer;
+}
+
+.latest .comment-box .user-c {
+	width: 78%;
+	background-color: #f5f6f7;
+	float: right;
+	padding: 10px;
+	border-radius: 3px;
+	position: relative;
+}
+
+.latest .comment-box .user-c:before {
+	content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 9px;
+    left: -18px;
+    border-style: solid;
+    border-color: transparent #f5f6f7  transparent transparent;
+    border-width: 9px;
+}
 
 
 /* End Dashboard Page */
