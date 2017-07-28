@@ -74,4 +74,20 @@ $(function() {
 		$(this).addClass('active-order').siblings('span').removeClass('active-order');
 	})
 
+
+	// Show Comments Btn on hover
+
+	$('.user-n').hover(function (){
+		$(this).children('.btns').animate({
+			display: 'block',
+			left: '2px'
+		}, 400);
+	}, function () {
+		$(this).children('.btns').animate({
+			display: 'none',
+			left: '-80px'
+		}, 400);
+	});
+
+
 });

@@ -236,6 +236,7 @@ a:hover {
 	margin: 5px 0 10px;
 	width: 100%;
 	overflow: hidden;
+	position: relative;
 }
 
 .latest .comment-box .user-n {
@@ -244,9 +245,52 @@ a:hover {
 	overflow: hidden;
 	position: relative;
 	top: 7px;
-	font-weight: bold;
 	left: 5px;
+	display: inline-block;
+	font-weight: bold;
+	height: 50px;
+}
+
+.latest .user-n span {
 	cursor: pointer;
+}
+
+
+.latest .btns {
+	margin-top: 10px;
+	display: block;
+	position: absolute;
+	left: -80px;
+}
+
+.latest .btns i.fa-check {
+	background: #64cb64;
+    color: #FFF;
+    line-height: 10px;
+    padding: 4px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 10px;
+}
+
+.latest .btns i.fa-edit {
+	background: #5bc0de;
+    color: #FFF;
+    line-height: 10px;
+    padding: 4px;
+    border-radius: 50%;
+    margin-right: 5px;
+    font-size: 10px;
+}
+
+.latest .btns i.fa-close {
+	background: #ec3939;
+    color: #FFF;
+    line-height: 10px;
+    font-size: 10px;
+    padding: 4px 5px;
+    margin-right: 4px;
+    border-radius: 50%;
 }
 
 .latest .comment-box .user-c {
@@ -257,6 +301,7 @@ a:hover {
 	border-radius: 3px;
 	position: relative;
 }
+
 
 .latest .comment-box .user-c:before {
 	content: "";

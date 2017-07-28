@@ -190,7 +190,20 @@
 								foreach($comments as $comment) {
 								
 									echo '<div class="comment-box">';
-										echo '<span class="user-n">' . $comment['user_name'] . '</span>';
+										echo '<div class="user-n"><span>' . $comment['user_name'] . '</span>';
+										?>
+											<div class="btns">
+												<a href="comments.php?do=Edit&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-edit"></i></a>
+												<a href="comments.php?do=Delete&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-close"></i></a>
+											<?php 
+												if($comment['c_status'] == 0) {
+													echo '<a href="comments.php?do=Approve&cid=' . $comment['c_id'] . '"><i class="fa fa-check"></i></a>';
+												}
+											?>
+											</div>
+										<?php
+
+										echo '</div>';
 										echo '<p class="user-c">' . $comment['c'] . '<p>' ;
 									echo '</div>';
 								}
