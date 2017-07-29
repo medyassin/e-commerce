@@ -120,21 +120,25 @@
 						<div class="panel-body">
 							<ul class="list-unstyled latest-users">
 								<?php
-									foreach($theLatestItems as $item) {
-										echo "<li>";
-											echo $item['Name'];
-											echo "<span class='btn btn-info pull-right'>";
-											    echo "<i class='fa fa-edit'></i>";
-											    echo "<a href='items.php?do=Edit&itemid=" . $item["Item_ID"] . "'> Edit</a>";
-											echo "</span>";
-											if ($item['Approve'] == 0) {
-											echo "<span class='btn btn-success pull-right activateBtn'>";
-											    echo "<i class='fa fa-check-circle'></i>";
-											    echo "<a href='items.php?do=Approve&itemid=" . $item["Item_ID"] . "'> Approve</a>";
-											echo "</span>";
-											}
+									if (! empty($theLatestItems)) {
+										foreach($theLatestItems as $item) {
+											echo "<li>";
+												echo $item['Name'];
+												echo "<span class='btn btn-info pull-right'>";
+												    echo "<i class='fa fa-edit'></i>";
+												    echo "<a href='items.php?do=Edit&itemid=" . $item["Item_ID"] . "'> Edit</a>";
+												echo "</span>";
+												if ($item['Approve'] == 0) {
+												echo "<span class='btn btn-success pull-right activateBtn'>";
+												    echo "<i class='fa fa-check-circle'></i>";
+												    echo "<a href='items.php?do=Approve&itemid=" . $item["Item_ID"] . "'> Approve</a>";
+												echo "</span>";
+												}
 
-										echo "</li>";
+											echo "</li>";
+										}
+									} else {
+										echo 'there is no items to show !';
 									}
 								?>
 							</ul>
@@ -192,25 +196,28 @@
 						</div>
 						<div class="panel-body">
 							<?php
-								foreach($comments as $comment) {
-								
-									echo '<div class="comment-box">';
-										echo '<div class="user-n"><a href="users.php?do=Edit&userid='. $comment['c_user_id'] .'"><span>' . $comment['user_name'] . '</span></a>';
-										?>
-											<div class="btns">
-												<a href="comments.php?do=Edit&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-edit"></i></a>
-												<a href="comments.php?do=Delete&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-close"></i></a>
-											<?php 
-												if($comment['c_status'] == 0) {
-													echo '<a href="comments.php?do=Approve&cid=' . $comment['c_id'] . '"><i class="fa fa-check"></i></a>';
-												}
+								if(! empty($comments)) {
+									foreach($comments as $comment) {
+										echo '<div class="comment-box">';
+											echo '<div class="user-n"><a href="users.php?do=Edit&userid='. $comment['c_user_id'] .'"><span>' . $comment['user_name'] . '</span></a>';
 											?>
-											</div>
-										<?php
+												<div class="btns">
+													<a href="comments.php?do=Edit&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-edit"></i></a>
+													<a href="comments.php?do=Delete&cid=<?php echo $comment['c_id'] ?>"><i class="fa fa-close"></i></a>
+												<?php 
+													if($comment['c_status'] == 0) {
+														echo '<a href="comments.php?do=Approve&cid=' . $comment['c_id'] . '"><i class="fa fa-check"></i></a>';
+													}
+												?>
+												</div>
+											<?php
 
+											echo '</div>';
+											echo '<p class="user-c">' . $comment['c'] . '<p>' ;
 										echo '</div>';
-										echo '<p class="user-c">' . $comment['c'] . '<p>' ;
-									echo '</div>';
+									}
+								} else {
+									echo 'there is no comments to show!';
 								}
 							?>
 						</div>

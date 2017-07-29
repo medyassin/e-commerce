@@ -27,6 +27,7 @@
 
 		if ($do == 'Manage') {
 
+
 			$orderSelctor = 'Ordering';
 
 			$sort = 'DESC';
@@ -49,9 +50,7 @@
 			$stmt2->execute();
 			$cats = $stmt2->fetchAll(); 
 
-			// echo '<pre>';
-			// print_r($cats);
-			// echo '</pre>'; ?>
+			if(! empty($cats)) { ?>
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -92,10 +91,16 @@
 				</div>
 			</div>
 
-
+			<?php } else {
+				echo '<div class="container">';
+					echo "<div class='alert alert-info'> There is no categories to show</div>";
+				echo '</div>';
+				} 
+			?>
+				<div class="container">
+					<a class="btn btn-sm btn-primary" href="?do=Add"><i class="fa fa-plus"></i> new category</a>
+				</div>
 			<?php
-			echo '<a class="btn btn-sm btn-primary" href="?do=Add"><i class="fa fa-plus"></i> new category</a>';
-			echo '</div>';
 		/*
 		=======================
 		| ADD CATS PAGE       |

@@ -101,19 +101,22 @@
 
 					</table>
 				</div>
-				<a class="btn btn-sm btn-primary" href="?do=Add"><i class='fa fa-plus'></i> new item</a>
 			</div>
 		<?php 
 			} else {
 
 			echo '<div class="container">';
-				$theMsg = "<div class='alert alert-info'> There is no items</div>";
-				redirectHome($theMsg, 'index.php', 2);
+				echo "<div class='alert alert-info'> There is no items</div>";
+
 			echo '</div>';
 
 			}
 		?>
+			<div class="container">
+				<a class="btn btn-sm btn-primary" href="?do=Add"><i class='fa fa-plus'></i> new item</a>
+			</div>
 		<?php
+
 		/*
 		========================
 		|  ADD NEW ITEMS PAGE   |

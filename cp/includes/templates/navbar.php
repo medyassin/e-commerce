@@ -25,8 +25,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['Username'] ;?> <span class="fa fa-align-right"></span></a>
           <ul class="dropdown-menu">
+            <li><a href="../index.php"><i class="fa fa-eye"></i> View Shop</a></li>
             <li><a href="users.php?do=Edit&userid=<?php echo $_SESSION['ID'] ?>"><i class="fa fa-user"></i> Edit Profile</a></li>
-            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
             <li><a href="logout.php"><i class="fa fa-sign-out"></i> Log out</a></li>
           </ul>
         </li>
