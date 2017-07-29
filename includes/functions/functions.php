@@ -1,4 +1,64 @@
 <?php 
+
+	/* ================== Start Front-End Functinos ================*/
+
+	/*
+	** Get Categories  Function V1
+	** Function to get Categories From Database
+	*/
+
+	function getCat () {
+		global $con;
+		$getCat = $con->prepare("SELECT * FROM cats ORDER BY ID ASC "); // Select all users expect administrators
+		$getCat->execute(); // Execute the statement4
+		$cats = $getCat->fetchAll(); // Fetch all data
+		return $cats;
+	}
+
+	/*
+	** Get Items Function V1
+	** Function to get Categories From Database
+	*/
+
+	function getItem ($catid) {
+		global $con;
+		$getItem = $con->prepare("
+									SELECT
+										items.*,
+										users.Username AS user_name
+									FROM 
+										items
+									JOIN
+										users 
+									ON
+										users.UserID = items.User_ID
+									WHERE
+										items.Cat_ID = $catid
+									ORDER BY Item_ID DESC
+									LIMIT 5
+
+			");
+
+		$getItem->execute(); // Execute the statement4
+		$items = $getItem->fetchAll(); // Fetch all data
+		return $items;
+	}	
+
+
+
+
+
+
+
+
+
+
+
+
+	/* ================== End Front-End Functinos ================*/
+
+	/* ================== Back-End FuncitionS ==================*/
+
 	/*
 	** TITLE FUNCTION V1.0
 	** add page title dynamicly
