@@ -51,4 +51,16 @@ $(function() {
 		$(this).children('button').hide(300);
 	});
 
+	// Adjuster the smae hight to all item-boxes on hover
+
+	// $('.item-box').hover(function() {
+	// 	var height = $(this).css('height');
+
+	// 	$('.item-box').css('height', '450px');
+	// }, function() {
+
+	// 	$('.item-box').css('height', '400px');
+
+	// });
+
 });
