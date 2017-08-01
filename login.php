@@ -1,5 +1,37 @@
 <?php
-	include 'init.php';
+	session_start();
+	$pageTitle = 'Login Page';
+	if (isset($_SESSION['user'])) {
+		header('Location: index.php');
+	}
+
+	include 'init.php'; // Include initialize file
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if User Coming From HTTP POST Request
+		$user   = $_POST['username'];
+		$pass   = $_POST['password'];
+		$hashedPass = sha1($pass);
+
+		// Check If The User Exist in Database
+		$stmt = $con->prepare("SELECT
+									Username, Password 
+								FROM users 
+								WHERE Username = ? 
+								AND 
+									Password = ?");
+
+		$stmt->execute(array($user, $hashedPass));
+		$count = $stmt->rowCount();
+
+		// If count > 0 means that the database contain the records about the User
+		if ($count > 0) {
+			$_SESSION['user'] = $user; // Registre session username
+
+			print_r($_SESSION);
+			header('Location: index.php');
+			exit();
+		}
+	}
 ?>
 
 	<div class="container">
@@ -41,7 +73,7 @@
 					<input type="submit" class="btn-signup" value = "Sign In">
 				</div>
 			</form>
-			<form>
+			<form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
 				<div class="col-xs-12 col-md-2 text-center">
 					<span class="or">or</span>
 				</div>

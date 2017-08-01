@@ -1,5 +1,6 @@
 <?php
-	
+	session_start();
+
 	include 'init.php';
 
 	$items = getItem($_GET['catid']);

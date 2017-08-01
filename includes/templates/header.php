@@ -4,20 +4,40 @@
 		<title><?php getTitle() ?></title>
 		<link rel="stylesheet" href="<?php echo $css?>bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo $css?>jquery-ui.css">
-		<link rel="stylesheet" href="<?php echo $css?>cp.css">
+		<link rel="stylesheet" href="<?php echo $css?>front.css">
 		<link rel="stylesheet" href="<?php echo $css?>jquery.selectBoxIt.css">
 		<link rel="stylesheet" href="<?php echo $css?>font-awesome.min.css">
 		<link rel="stylesheethref" href="https://fonts.googleapis.com/css?family=Roboto">
 	</head>
 	<body>
 
-		<div class="container">
-			<div class="upper-bar pull-right">
-				<a href="login.php">
-					<span class="pull-right"><i class="fa fa-user"></i> Login/Signup</span>
-				</a>
+		<?php if(isset($_SESSION['user'])) { ?>
+
+			<div class="container">
+				<div class="upper-bar pull-right">
+						<span class="pull-right">
+						<i class="fa fa-user"></i>
+							welcome <?php echo $_SESSION['user'];
+							if(checkUserStatus($_SESSION['user']) == 1) {
+								echo ' <span class="alert alert-danger">You are account is not activated yet !</span>';} 
+							?>
+						<a class="alert alert-info" href="profile.php">my profile</a>
+						<a class="alert alert-success" href="logout.php">logout</a>
+						</span>
+				</div>
 			</div>
-		</div>
+
+		<?php } else {?>
+
+			<div class="container">
+				<div class="upper-bar pull-right">
+					<a href="login.php">
+						<span class="pull-right"><i class="fa fa-user"></i> Login/Signup</span>
+					</a>
+				</div>
+			</div>
+
+		<?php } ?>
 
 		<nav class="navbar navbar-default">
 		  <div class="container">
