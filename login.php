@@ -40,8 +40,9 @@
 
 					<input type="submit" class="btn-signup" value = "Sign In">
 				</div>
-
-				<div class="col-md-2 text-center">
+			</form>
+			<form>
+				<div class="col-xs-12 col-md-2 text-center">
 					<span class="or">or</span>
 				</div>
 

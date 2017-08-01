@@ -22,7 +22,22 @@
 /* Start Header */
 
 .upper-bar {
-	padding: 5px 0;
+    padding: 5px 0 5px 15px;
+    border-left: 1px solid #e7e7e7;
+}
+
+.upper-bar a {
+    color: #777777;
+    text-decoration: none;
+}
+
+.nav li{
+	background-color: #FFF;
+	transition: all 0.3s ease-in-out;
+}
+
+.nav li:hover {
+	background: #e7e7e7;
 }
 
 /* End Header */
@@ -30,7 +45,7 @@
 /* Start Login Page */
 
 .login {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	padding: 20px;
 	border: 1px solid #eee;
@@ -54,7 +69,7 @@
 }
 
 .login form {
-	padding: 15px;
+	padding-top: 15px;
 }
 
 .login .or {

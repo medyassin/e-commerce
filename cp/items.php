@@ -73,8 +73,8 @@
 
 							echo "<tr>"; // START TAbLE ROW
 								echo "<td>" . $item['Item_ID'] . "</td>";
-								echo "<td>" . $item['Name'] . "</td>";
-								echo "<td>" . $item['Description'] . "</td>";
+								echo "<td>" . substr($item['Name'], 0, 20) . "</td>";
+								echo "<td>" . substr($item['Description'], 0, 25) . ' ...' . "</td>";
 								echo "<td>" . $item['Price'] . "</td>";
 								echo "<td>" . $item['Add_Date'] . "</td>";
 								echo "<td>" . $item['cat_name'] . "</td>";

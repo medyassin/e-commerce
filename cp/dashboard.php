@@ -123,7 +123,7 @@
 									if (! empty($theLatestItems)) {
 										foreach($theLatestItems as $item) {
 											echo "<li>";
-												echo $item['Name'];
+												echo substr($item['Name'], 0, 20);
 												echo "<span class='btn btn-info pull-right'>";
 												    echo "<i class='fa fa-edit'></i>";
 												    echo "<a href='items.php?do=Edit&itemid=" . $item["Item_ID"] . "'> Edit</a>";

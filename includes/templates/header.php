@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="upper-bar pull-right">
 				<a href="login.php">
-					<span class="pull-right">Login/Signup</span>
+					<span class="pull-right"><i class="fa fa-user"></i> Login/Signup</span>
 				</a>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 		      	<?php 
 
 		      		$cats = getCat();
-		      		$icons = array('fa-bath','fa-desktop', 'fa-amazon', 'fa-slideshare', 'fa-bed');
+		      		$icons = array('fa-bath','fa-desktop', 'fa-amazon', 'fa-slideshare', 'fa-bed', 'fa-home');
 
 		      		foreach(array_combine($icons, $cats) as $icon => $cat) {
 		      			echo '<li><a href="cats.php?catid='. $cat['ID'] . '&name=' . strtolower(str_replace(' ', '-',$cat['Name'])) .'"><i class="fa ' . $icon . '"></i> ' . $cat['Name'] . '</a></li>';
