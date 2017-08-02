@@ -73,7 +73,7 @@
 
 							echo "<tr>"; // START TAbLE ROW
 								echo "<td>" . $item['Item_ID'] . "</td>";
-								echo "<td>" . substr($item['Name'], 0, 20) . "</td>";
+								echo "<td>" . substr($item['Name'], 0, 20) . ' ...' ."</td>";
 								echo "<td>" . substr($item['Description'], 0, 25) . ' ...' . "</td>";
 								echo "<td>" . $item['Price'] . "</td>";
 								echo "<td>" . $item['Add_Date'] . "</td>";
@@ -561,7 +561,7 @@
 					if(!empty($rows)) {
 				?>
 				<!-- HEADING OF THE PAGE -->
-				<div class="ehead"> <h1 class="text-center"><?php echo $item['Name'] ?> - Comments</h1></div>
+				<div class="ehead"> <h1 class="text-center"><?php echo substr($item['Name'], 0, 25) ?> - Comments</h1></div>
 					<div class="table-responsive">
 						<table class="main-table text-center table table-bordered">
 							<tr>
@@ -576,7 +576,7 @@
 							foreach($rows as $row) {
 
 								echo "<tr>"; // START TAbLE ROW
-									echo "<td>" . $row['c'] . "</td>";
+									echo "<td>" . substr($row['c'], 0, 45) . ' ...' . "</td>";
 									echo "<td>" . $row['user_name'] . "</td>";
 									echo "<td>" . $row['c_date'] . "</td>";
 									

@@ -1,0 +1,270 @@
+
+/* Start Global styling */
+
+* {
+	box-sizing: border-box;
+	outline: none;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+}
+
+.asterisk {
+	color: #ec1515;
+    font-size: 15px;
+    position: absolute;
+    top: 34px;
+    right: 9px;
+}
+
+.form-group {
+	position: relative;
+}
+/* Start Header */
+
+.upper-bar {
+    padding: 5px 0 5px 15px;
+    border-left: 1px solid #e7e7e7;
+}
+
+.upper-bar a {
+    color: #777777;
+    text-decoration: none;
+}
+
+.nav li{
+	background-color: #FFF;
+	transition: all 0.3s ease-in-out;
+}
+
+.nav li:hover {
+	background: #e7e7e7;
+}
+
+/* End Header */
+
+/* Start Login Page */
+
+.login {
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #eee;
+}
+
+.login h5 {
+	margin-bottom: 30px;
+}
+
+.login p {
+	font-size: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.login .services {
+	margin: 0 auto;
+	width: 100%;
+	display: inline-block;
+	padding: 0 0 30px 0;
+}
+
+.login form {
+	padding-top: 15px;
+}
+
+.login .or {
+	font-size: 18px;
+    text-transform: uppercase;
+    color: #2972e7;
+    position: absolute;
+    top: 100px;
+}
+
+.login .or:before {
+    content: "";
+    background-color: #ccc;
+    height: 50px;
+    width: 1px;
+    position: absolute;
+    left: 10px;
+    top: -58px;
+}
+
+.login .or:after {
+	content: "";
+    background-color: #ccc;
+    height: 50px;
+    width: 1px;
+    position: absolute;
+    left: 10px;
+    top: 31px;
+}
+
+.login input {
+	margin-bottom: 15px;
+}
+
+.login {
+	margin-bottom: 50px;
+}
+
+.login .btn-signup {
+	background: transparent;
+    border: 2px solid #2972e7;
+    padding: 5px;
+    width: 100%;
+    color: #2972e7;
+    font-weight: 400;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.login .btn-signup:hover {
+	background: #2972e7;
+    color: #FFF;
+}
+
+.login .btn-signin {
+	background: transparent;
+    border: 2px solid #ff9900;
+    padding: 5px;
+    width: 100%;
+    color: #ff9900;
+    font-weight: 400;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.login .btn-signin:hover {
+	background: #ff9900;
+    color: #FFF;
+}
+
+.login .signin .form-control:focus {
+	border-color: #ff9900;
+    box-shadow: none;    
+}
+
+.login .signup .form-control:focus {
+	border-color: #2972e7;
+    box-shadow: none;    
+}
+
+/* End Login Page */
+
+/* Start Bootstrap */
+
+.navbar-brand {
+	width: 150px;
+}
+
+.navbar-brand img {
+	width: 100%;
+}
+
+.navbar-default {
+	background-color: #FFF;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #777;
+    /* font-size: 14px; */
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.form-control {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+[placeholder] {
+
+}
+/* End Bootstrap */
+
+/* Start cat page */
+.cat-name {
+	/* Not yet styled */
+}
+
+.cat-name h1 {
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 30px;
+}
+
+.items {
+	padding: 20px 0;
+}
+
+
+.items .item-box {
+	overflow: hidden;
+	border: 2px solid transparent;
+	padding: 17px;
+	height: 450px;
+}
+
+.items .col-md-3 {
+	margin-bottom: 25px;
+}
+
+.items .item-box:hover {
+	border: 2px solid #e6e6e6;
+	/*cursor: pointer;*/
+}
+
+.items .item-box img {
+	width: 100%;
+	margin: 8px 0;
+}
+
+.items .item-box .title {
+	font-weight: 700;
+	display: block;
+}
+
+.items .item-box .status {
+	border-bottom: 2px solid #f85933;
+    display: block;
+    font-weight: 400;
+    color: #f85933;
+    text-transform: uppercase;
+    padding: 2px;
+}
+
+.items .item-box .user {
+	border-bottom: 1px solid #ccc;
+    display: block;
+    margin-bottom: 7px;
+    padding-left: 1px;
+    padding-bottom: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
+.items .item-box button {
+	display: block;
+    background: transparent;
+    border: 2px solid #f85933;
+    color: #f85933;
+    width: 100%;
+    margin-top: 10px;
+    display: none;
+    padding: 5px 0;
+}
+.items .item-box button:hover {
+    background: #f85933;
+    border: 2px solid #f85933;
+    color: #FFF;
+}
+
+.items .item-box .price {
+	display: block;
+}
+
+
+/* End Cat Page */

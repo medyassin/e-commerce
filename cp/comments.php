@@ -62,8 +62,8 @@
 
 							echo "<tr>"; // START TAbLE ROW
 								echo "<td>" . $row['c_id'] . "</td>";
-								echo "<td>" . $row['c'] . "</td>";
-								echo "<td>" . $row['item_name'] . "</td>";
+								echo "<td>" . substr($row['c'], 0, 30) . ' ...' . "</td>";
+								echo "<td>" . substr($row['item_name'], 0, 25) . ' ...' . "</td>";
 								echo "<td>" . $row['user_name'] . "</td>";
 								echo "<td>" . $row['c_date'] . "</td>";
 								
@@ -72,7 +72,7 @@
 									echo "<i class='fa fa-edit'></i>Edit</a> ";
 
 									echo "<a href='?do=Delete&cid=" . $row['c_id'] . "'" . "class='btn btn-danger confirm'>";
-									echo "<i class='fa fa-close'></i>Delete</a> ";
+									echo "<i class='fa fa-close'></i>Delete</a>";
 
 								// Case User is Not Activated yet ==> show Btn of Activation
 								if ($row['c_status'] == 0) {
