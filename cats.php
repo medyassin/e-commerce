@@ -3,7 +3,7 @@
 
 	include 'init.php';
 
-	$items = getItem($_GET['catid']);
+	$items = getItem('Cat_ID', $_GET['catid']);
 
 
 
@@ -25,28 +25,13 @@
 				<?php
 					foreach($items as $item) {
 
-						// replace status by strings
-						switch($item['Status']) {
-							case 1:
-								$itemS = 'New';
-								break;
-							case 2:
-								$itemS = 'Like New';
-								break;
-							case 3:
-								$itemS = 'Used';
-								break;
-							 default:
-								$itemS = 'Very Old';
-						}
-
 						echo '<div class="col-sm-4 col-md-3">';
 							echo '<div class="item-box">';
-								echo '<span class="status">' . $itemS . '</span>';
-								echo '<img src="' . $item['Image'] . '" alt="item-image">';
+								echo '<span class="status">' . getStatus($item['Status']) . '</span>';
+								echo '<a href="item.php?itemid=' . $item['Item_ID'] . '"><img src="data/uploads/items/' . $item['Image'] . '" alt="item-image"></a>';
 								echo '<span class="user">' . $item['user_name'] . '</span>';
 								echo '<span class="title">' . $item['Name'] . '</span>';
-								echo '<span class="price">' . $item['Price'] . '</span>';
+								echo '<span class="price">' . $item['Price'] . ' DHS' . '</span>';
 								echo '<button>Buy Now</button>';
 							echo '</div>';
 						echo '</div>';
@@ -58,7 +43,9 @@
 
 	<?php 
 		} else {
-			echo 'there is no item to show';
+			echo '<div class="container">';
+			echo '<div class="alert alert-info">there is no items to show</div>';
+			echo '</div>';
 		}
 
 

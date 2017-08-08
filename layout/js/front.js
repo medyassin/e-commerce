@@ -11,7 +11,17 @@ $(function() {
 
 	});
 
+	// Switch Between Login & Signup
 
+	$('.login-page h1 span').click(function () {
+
+		$(this).addClass('selected').siblings().removeClass('selected');
+
+		$('.login-page form').hide();
+
+		$('.' + $(this).data('class')).fadeIn(100);
+
+	});
 
 	// Hide Placeholder on form focus
 	$('[placeholder]').focus(function() {
@@ -51,8 +61,24 @@ $(function() {
 		$(this).children('button').hide(300);
 	});
 
-	// add menu class;
+	$('.live').keyup(function() {
+		$($(this).data('class')).text($(this).val());
+	})
 
+	$('select').on('change', function() {
+		var s = parseInt($(this).val());
 
+		if(s === 1) {
+			status = 'New';
+		} else if(s === 2) {
+			status = 'Like New';
+		} else if(s === 3) {
+			status = 'Used';
+		} else {
+			status = 'Very Old';
+		}
+
+		$($(this).data('class')).text(status);
+	})
 
 });

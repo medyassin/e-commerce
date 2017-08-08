@@ -109,3 +109,12 @@
 		$rows = $stmt->fetchAll(); // Fetch all data
 		return $rows;
 	}
+
+	/*
+	** Get Size Function V1
+	** $size: size in MegaByte
+	*/
+
+	function setSize($size) {
+		return $size*1024*1024;
+	}

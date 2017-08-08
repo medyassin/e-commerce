@@ -8,28 +8,68 @@
 	font-family: 'Roboto', sans-serif;
 }
 
-.asterisk {
-	color: #ec1515;
-    font-size: 15px;
-    position: absolute;
-    top: 34px;
-    right: 9px;
+body {
+    
 }
 
 .form-group {
 	position: relative;
 }
-/* Start Header */
+
+.asterisk {
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #D20707;
+}
+
+.input-container {
+    position: relative;
+}
+
+/* Start Upper Bar */
 
 .upper-bar {
-    padding: 5px 0 5px 15px;
-    border-left: 1px solid #e7e7e7;
+    height: 50px;
 }
 
-.upper-bar a {
-    color: #777777;
-    text-decoration: none;
+.upper-bar .my-image {
+    height: 100%;
+    border-radius: 50%;
+    line-height: 50px;
+    display: inline-block;
 }
+
+.upper-bar .my-image img {
+    height: 84%;
+    padding: 3px;
+    border: 1px solid #EEE;
+}
+
+.upper-bar .my-info {
+    display: inline-block;
+}
+
+.upper-bar .login-upper {
+    line-height: 32px;
+    overflow: hidden;
+    margin: 8px;
+    padding: 0 20px;
+    background: #a2b4cb;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+.upper-bar .login-upper:hover {
+    background-color: #8ca0b9;
+}
+
+.upper-bar .login-upper a {
+    color: #FFF;
+}
+/* End Upper Bar */
+
+/* Start Header */
 
 .nav li{
 	background-color: #FFF;
@@ -44,110 +84,53 @@
 
 /* Start Login Page */
 
-.login {
-	width: 100%;
-	margin: 0 auto;
-	padding: 20px;
-	border: 1px solid #eee;
+.login-page form,
+.the-errors {
+    max-width: 380px;
+    margin: auto !important;
 }
 
-.login h5 {
-	margin-bottom: 30px;
+.login-page form input {
+    margin-bottom: 10px;
 }
 
-.login p {
-	font-size: 20px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #ccc;
+.login-page [data-class="login"].selected {
+    color: #337AB7;
 }
 
-.login .services {
-	margin: 0 auto;
-	width: 100%;
-	display: inline-block;
-	padding: 0 0 30px 0;
+.login-page [data-class="signup"].selected {
+    color: #5cb85c;
 }
 
-.login form {
-	padding-top: 15px;
+.login-page h1 {
+    color: #C0C0C0;
 }
 
-.login .or {
-	font-size: 18px;
-    text-transform: uppercase;
-    color: #2972e7;
-    position: absolute;
-    top: 100px;
+.login-page h1 span {
+    cursor: pointer;
 }
 
-.login .or:before {
-    content: "";
-    background-color: #ccc;
-    height: 50px;
-    width: 1px;
-    position: absolute;
-    left: 10px;
-    top: -58px;
+.login-page .signup {
+    display: none;
 }
 
-.login .or:after {
-	content: "";
-    background-color: #ccc;
-    height: 50px;
-    width: 1px;
-    position: absolute;
-    left: 10px;
-    top: 31px;
+.the-errors .msg {
+    padding: 10px;
+    text-align: left;
+    background-color: #fff;
+    margin-bottom: 8px;
+    border-right: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #919191;
 }
 
-.login input {
-	margin-bottom: 15px;
+.the-errors .error {
+    border-left: 5px solid #cd6858
 }
 
-.login {
-	margin-bottom: 50px;
-}
-
-.login .btn-signup {
-	background: transparent;
-    border: 2px solid #2972e7;
-    padding: 5px;
-    width: 100%;
-    color: #2972e7;
-    font-weight: 400;
-    transition: all 0.3s ease-in-out;
-    margin-top: 15px;
-}
-
-.login .btn-signup:hover {
-	background: #2972e7;
-    color: #FFF;
-}
-
-.login .btn-signin {
-	background: transparent;
-    border: 2px solid #ff9900;
-    padding: 5px;
-    width: 100%;
-    color: #ff9900;
-    font-weight: 400;
-    transition: all 0.3s ease-in-out;
-    margin-top: 15px;
-}
-
-.login .btn-signin:hover {
-	background: #ff9900;
-    color: #FFF;
-}
-
-.login .signin .form-control:focus {
-	border-color: #ff9900;
-    box-shadow: none;    
-}
-
-.login .signup .form-control:focus {
-	border-color: #2972e7;
-    box-shadow: none;    
+.the-errors .success {
+    border-left: 5px solid #61aa49
 }
 
 /* End Login Page */
@@ -164,6 +147,9 @@
 
 .navbar-default {
 	background-color: #FFF;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid #eee;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -181,6 +167,19 @@
 [placeholder] {
 
 }
+
+.panel-default {
+    border-radius: 0;
+}
+
+.panel-heading {
+    text-transform: uppercase;
+    color: #898888 !important;
+}
+
+.alert {
+    text-transform: uppercase !important;
+}
 /* End Bootstrap */
 
 /* Start cat page */
@@ -188,7 +187,7 @@
 	/* Not yet styled */
 }
 
-.cat-name h1 {
+h1 {
 	text-transform: uppercase;
 	font-size: 24px;
 	font-weight: 700;
@@ -268,3 +267,189 @@
 
 
 /* End Cat Page */
+
+/* Start Profile Page */ 
+
+.my-items .item-box {
+    height: 370px;
+}
+
+.information {
+    margin-top: 20px;
+}
+
+.information ul {
+    padding: 0;
+    margin: 0;
+}
+
+.information ul li {
+    padding: 10px;
+}
+
+.information ul li:nth-child(odd) {
+    background-color: #EEE;
+}
+
+.information ul li span {
+    display: inline-block;
+    width: 120px;
+}
+
+
+/* End Profile Page */
+
+
+/* Start New item Page */
+
+.create-ad .item-box {
+    height: 370px;
+}
+
+.create-ad .item-box {
+    border: 1px solid #EEE;
+}
+
+.create-ad .item-box:hover {
+    border: 1px solid #EEE;
+}
+
+.create-ad form {
+    border: 1px solid #EEE;
+    padding: 11px 0 12px;
+}
+
+.create-ad input{
+    border: 1px solid #EEE;
+}
+
+.create-ad .asterisk{
+    font-size: 14px;
+    position: absolute;
+    right: 29px;
+    top: 10px;
+    color: #f85933;
+}
+
+.create-ad .col-md-3 {
+    margin-bottom: 0;
+}
+
+
+.the-errors {
+    max-width: 380px;
+    margin: 0;
+}
+
+/* End New item Page */
+
+/* Start Item Page */
+
+.show-item h1 {
+    margin-bottom: 40px;
+}
+.show-item .show-img {
+    width: 100%;
+    height: 358px;
+    border: 3px solid #EEE;
+    position: relative;
+}
+.show-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.show-item .show-status {
+    position: absolute;
+    top: 12px;
+    left: -18px;
+    text-transform: uppercase;
+    background: #ef914d;
+    color: #FFF;
+    padding: 3px 17px;
+}
+
+.show-meta {
+    padding: 10px 15px;
+    background: #fafafa;
+    text-transform: uppercase;
+}
+
+.show-meta span:not(:last-child) {
+    padding-right: 15px;
+}
+
+.show-meta .show-user {
+    float: right;
+}
+
+.show-item .show-title {
+    font-weight: bold;
+    padding: 10px 0 30px;
+}
+
+.show-item .show-desc {
+    background-color: #fafafa;
+    padding: 10px 10px 10px 15px;
+    border-left: 2px solid #ccc;
+}
+
+.show-item button {
+    float: right;
+    background: #ef914d;
+    border: none;
+    padding: 10px 35px;
+    text-transform: uppercase;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.show-price {
+    margin: 35px 0;
+}
+
+.show-item .show-price button:hover {
+    background-color: #e8853d;
+}
+
+.show-price span {
+    text-transform: uppercase;
+    font-size: 22px;
+    color: #7f8387;
+    background: #fafafa;
+    padding: 5px 10px 5px 15px;
+    border-left: 2px solid #ef914d;
+}
+
+.add-comment h3 {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 1.2px;
+}
+
+.add-comment textarea {
+    display: block;
+    width: 100%;
+    height: 70px;
+    border: 2px solid #EEE;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+}
+
+.add-comment input[type='submit'] {
+    background-color: #EEE;
+    border: none;
+    padding: 8px 24px;
+    text-transform: uppercase;
+    color: #646363;
+}
+.alert-custom {
+    background-color: #f1efb6;
+}
+/* End Item Page */
+
+

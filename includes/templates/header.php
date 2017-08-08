@@ -10,27 +10,42 @@
 		<link rel="stylesheethref" href="https://fonts.googleapis.com/css?family=Roboto">
 	</head>
 	<body>
-
+	<div class="container">
+		<div class="upper-bar">
 		<?php if(isset($_SESSION['user'])) { ?>
 
-			<div class="container">
-				<div class="upper-bar pull-right">
-						<span class="pull-right">
-						<i class="fa fa-user"></i>
-							welcome <?php echo $_SESSION['user'];
-							if(checkUserStatus($_SESSION['user']) == 1) {
-								echo ' <span class="alert alert-danger">You are account is not activated yet !</span>';} 
-							?>
-						<a class="alert alert-info" href="profile.php">my profile</a>
-						<a class="alert alert-success" href="logout.php">logout</a>
-						</span>
-				</div>
+			<div class="my-image">
+				<?php
+				$stmt = $con->prepare("SELECT Image FROM users WHERE UserID = ?");
+				$stmt->execute(array($_SESSION['uid']));
+
+				$row = $stmt->fetch();
+
+				if ($row['Image'] === NULL) {
+					echo '<img class="img-circle" src="data/uploads/avatar.png" alt="img">';
+				} else {
+					echo '<img class="img-circle" src="data/uploads/' . $row['Image'] . '" alt="img">';
+				}
+
+				?>
+			</div>
+
+			<div class="btn-group my-info">
+				<span class="btn dropdown-toggle" data-toggle="dropdown">
+					<?php echo $sessionUser ?>
+					<span class="caret"></span>
+				</span>
+				<ul class="dropdown-menu">
+				<li><a href="profile.php">My Profile</a></li>
+				<li><a href="newitem.php">New Item</a></li>
+				<li><a href="logout.php">Log out</a></li>
+				</ul>
 			</div>
 
 		<?php } else {?>
 
-			<div class="container">
-				<div class="upper-bar pull-right">
+			<div class="pull-right">
+				<div class="login-upper">
 					<a href="login.php">
 						<span class="pull-right"><i class="fa fa-user"></i> Login/Signup</span>
 					</a>
@@ -38,7 +53,8 @@
 			</div>
 
 		<?php } ?>
-
+		</div>
+	</div>
 		<nav class="navbar navbar-default">
 		  <div class="container">
 		    <!-- Brand and toggle get grouped for better mobile display -->

@@ -2,6 +2,13 @@
 	
 
 	include 'cp/connect.php';
+
+	$sessionUser = '';
+
+	if(isset($_SESSION['user'])) {
+		$sessionUser = $_SESSION['user'];
+	}
+
 	// Routes
 	$tpl    = 'includes/templates/'; // Template Directory
 	$lang   = 'includes/languages/'; // Languages Directory

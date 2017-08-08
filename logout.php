@@ -6,6 +6,6 @@
 
 	session_destroy(); // Destroy the session
 	
-	header('Location: index.php'); 
+	header('Location: login.php'); 
 
 	exit();

@@ -16,13 +16,41 @@
 	}
 
 	/*
-	** Get Items Function V1
+	** Get Status Function V1
+	** $status: integer
+	** $st: string
+	*/
+
+	function getStatus($status) {
+
+		switch($status) {
+
+		case 1:
+			$st = 'New';
+			break;
+		case 2:
+			$st = 'Like New';
+			break;
+		case 3:
+			$st = 'Used';
+			break;
+		 default:
+			$st = 'Very Old';
+		}
+		return $st;
+	}
+
+
+
+
+	/*
+	** Get Items Function V2
 	** Function to get Categories From Database
 	*/
 
-	function getItem ($catid) {
+	function getItem ($where, $value) {
 		global $con;
-		$getItem = $con->prepare("
+		$getItems = $con->prepare("
 									SELECT
 										items.*,
 										users.Username AS user_name
@@ -33,14 +61,14 @@
 									ON
 										users.UserID = items.User_ID
 									WHERE
-										items.Cat_ID = $catid
+										$where = ?
 									ORDER BY Item_ID DESC
 									LIMIT 5
 
 			");
 
-		$getItem->execute(); // Execute the statement4
-		$items = $getItem->fetchAll(); // Fetch all data
+		$getItems->execute(array($value)); // Execute the statement4
+		$items = $getItems->fetchAll(); // Fetch all data
 		return $items;
 	}	
 
