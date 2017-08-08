@@ -2,6 +2,17 @@ $(function() {
 
 	'use strict';
 
+	//Dashboard
+	$('.toggle-info').click(function() {
+		$(this).toggleClass('selected').parent().next('.panel-body').fadeToggle(100);
+
+		if($(this).hasClass('selected')) {
+			$(this).html('<i class="fa fa-minus"></i>')
+		} else {
+			$(this).html('<i class="fa fa-plus"></i>')
+		}
+	})
+
 	// Trigger SelectBoxIt Plugin
 
 	$("select").selectBoxIt({
@@ -62,5 +73,21 @@ $(function() {
 	$('.ordering span').click(function() {
 		$(this).addClass('active-order').siblings('span').removeClass('active-order');
 	})
+
+
+	// Show Comments Btn on hover
+
+	$('.comment-box').hover(function (){
+		$(this).children('.user-n').children('.btns').animate({
+			display: 'block',
+			left: '2px'
+		}, 400);
+	}, function () {
+		$(this).children('.user-n').children('.btns').animate({
+			display: 'none',
+			left: '-80px'
+		}, 400);
+	});
+
 
 });

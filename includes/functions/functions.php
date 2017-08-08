@@ -1,4 +1,110 @@
 <?php 
+
+	/* ================== Start Front-End Functinos ================*/
+
+	/*
+	** Get Categories  Function V1
+	** Function to get Categories From Database
+	*/
+
+	function getCat () {
+		global $con;
+		$getCat = $con->prepare("SELECT * FROM cats ORDER BY ID ASC "); // Select all users expect administrators
+		$getCat->execute(); // Execute the statement4
+		$cats = $getCat->fetchAll(); // Fetch all data
+		return $cats;
+	}
+
+	/*
+	** Get Status Function V1
+	** $status: integer
+	** $st: string
+	*/
+
+	function getStatus($status) {
+
+		switch($status) {
+
+		case 1:
+			$st = 'New';
+			break;
+		case 2:
+			$st = 'Like New';
+			break;
+		case 3:
+			$st = 'Used';
+			break;
+		 default:
+			$st = 'Very Old';
+		}
+		return $st;
+	}
+
+
+
+
+	/*
+	** Get Items Function V2
+	** Function to get Categories From Database
+	*/
+
+	function getItem ($where, $value) {
+		global $con;
+		$getItems = $con->prepare("
+									SELECT
+										items.*,
+										users.Username AS user_name
+									FROM 
+										items
+									JOIN
+										users 
+									ON
+										users.UserID = items.User_ID
+									WHERE
+										$where = ?
+									ORDER BY Item_ID DESC
+									LIMIT 5
+
+			");
+
+		$getItems->execute(array($value)); // Execute the statement4
+		$items = $getItems->fetchAll(); // Fetch all data
+		return $items;
+	}	
+
+	/*
+	** Check User Status Function v1.0
+	** Function to check if the User is NOT ACTIVATED
+	*/
+	function checkUserStatus($user) {
+
+		global $con;
+
+		$stmtc = $con->prepare("SELECT
+									Username, RegStatus 
+								FROM users 
+								WHERE Username = ? 
+								AND 
+									RegStatus = 0");
+
+		$stmtc->execute(array($user));
+		$status = $stmtc->rowCount();
+
+		return $status;
+	}
+
+
+
+
+
+
+
+
+
+	/* ================== End Front-End Functinos ================*/
+
+	/* ================== Back-End FuncitionS ==================*/
+
 	/*
 	** TITLE FUNCTION V1.0
 	** add page title dynamicly
@@ -108,13 +214,4 @@
 		$stmt->execute(); // Execute the statement4
 		$rows = $stmt->fetchAll(); // Fetch all data
 		return $rows;
-	}
-
-	/*
-	** Get Size Function V1
-	** $size: size in MegaByte
-	*/
-
-	function setSize($size) {
-		return $size*1024*1024;
 	}

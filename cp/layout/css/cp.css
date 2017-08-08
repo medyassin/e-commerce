@@ -4,10 +4,11 @@
 	box-sizing: border-box;
 	outline: none;
 	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
-	background-color: #fbfbfb;
+	background-color: #f5f6f7;
 }
 
 a:hover {
@@ -49,8 +50,8 @@ a:hover {
 .ehead {
 	width: 100%;
 	height: 113px;
-	background: #34495e;  
-	margin-bottom: 20px;
+	background: #FFF;  
+	margin: 18px 0;
 }
 
 .ehead h1 {
@@ -58,7 +59,7 @@ a:hover {
 	text-transform: uppercase;
 	margin: 0;
 	font-weight: bold;
-	color: #FFF;
+	color: #575757;
 	font-size: 30px;
 	letter-spacing: 1.2px;
 }
@@ -77,15 +78,16 @@ a:hover {
 	border-radius: 0;
 }
 
-.navbar-inverse {
-	background-color: #3f3f3f;
-}
-.navbar-inverse .navbar-brand {
-	color: #ecebeb;
+.navbar {
+	background-color: #af71cf;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: #ecebeb;
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-brand:hover {
+    color: #FFF;
+    text-transform: uppercase;
 }
 
 .form-control {
@@ -100,9 +102,6 @@ a:hover {
 
 .btn {
 	text-transform: uppercase;
-	border-radius: 50px;
-	padding-right: 20px;
-	padding-left: 20px;
 	border: none;
 }
 
@@ -129,51 +128,81 @@ a:hover {
 
 .home-stats .stat {
 	width: 100%;
-	height: 150px;
+	height: 100px;
 	padding: 20px;
 	margin-bottom: 20px;
 	font-weight: bold;
-	border-radius: 10px;
-	color: #FFF;
+	border-radius: 2px;
+	position: relative;
+	overflow: hidden;
+	background-color: #FFF;
+	box-shadow: 0 1px rgba(0,0,0,.03);
+}
+
+.home-stats .stat:hover {
+	cursor: pointer;
+	box-shadow: 0 0 36px #dee2e5;
+}
+
+.home-stats .stat .info {
+	float: right;
+	color: #575757;
+}
+
+.home-stats .stat i {
+	font-size: 47px;
+    left: 10px;
+    position: absolute;
+    line-height: 62px;
+    color: #eaeaea;
 }
 
 .home-stats .stat a {
-	color: #FFF;
+	color: #575757;
 }
 
 .home-stats .stat a:hover {
-	color: #FFF;
+	color: #575757;
 	text-decoration: none;
 }
 
 .home-stats .stat span {
-	display: block;
-	padding-top: 10px;
-	font-size: 60px;
+	display: block;;
+	font-size: 35px;
+	float: right;
 }
 
-.latest {
-	margin-top: 30px;
+
+.latest .toggle-info {
+	color: #999;
+	cursor: pointer;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 50%;
+	transition: all 0.3s ease-in-out
 }
 
-.latest .panel-body {
-	padding: 10px 0;
+.latest .toggle-info:hover {
+	color: #838181;
+    background-color: #f5f6f7;
+    padding: 5px 10px;
+    border-radius: 50%
 }
 
-.home-stats .st-members {
-	background-color: #2ecc71;
+.latest .panel {
+	border: none;
 }
 
-.home-stats .st-pending {
-	background-color: #e74c3c;
+.latest .panel:hover {
+	box-shadow: 0px 0px 13px 4px #ececec;
 }
 
-.home-stats .st-items {
-	background-color: #9b59b6;
-}
-
-.home-stats .st-comments {
-	background-color: #34495e;
+.panel-default .panel-heading {
+    color: #4a4b4c;
+    background-color: #ffffff;
+    font-weight: bold;
+    border:none;
+    text-transform: uppercase;
 }
 
 .latest-users {
@@ -191,7 +220,8 @@ a:hover {
 }
 
 .latest-users li:nth-child(even) {
-	background-color: #EEE;
+	background-color: #f5f6f7;
+    border-radius: 2px;
 }
 
 .latest-users li a {
@@ -202,6 +232,89 @@ a:hover {
 	margin-right: 10px;
 }
 
+.latest .comment-box {
+	margin: 5px 0 10px;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.latest .comment-box .user-n {
+	margin-right: 1%;
+	width: 21%;
+	overflow: hidden;
+	position: relative;
+	top: 7px;
+	left: 5px;
+	display: inline-block;
+	font-weight: bold;
+	height: 50px;
+}
+
+.latest .user-n span {
+	cursor: pointer;
+}
+
+
+.latest .btns {
+	margin-top: 10px;
+	display: block;
+	position: absolute;
+	left: -80px;
+}
+
+.latest .btns i.fa-check {
+	background: #64cb64;
+    color: #FFF;
+    line-height: 10px;
+    padding: 4px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 10px;
+}
+
+.latest .btns i.fa-edit {
+	background: #5bc0de;
+    color: #FFF;
+    line-height: 10px;
+    padding: 4px;
+    border-radius: 50%;
+    margin-right: 5px;
+    font-size: 10px;
+}
+
+.latest .btns i.fa-close {
+	background: #ec3939;
+    color: #FFF;
+    line-height: 10px;
+    font-size: 10px;
+    padding: 4px 5px;
+    margin-right: 4px;
+    border-radius: 50%;
+}
+
+.latest .comment-box .user-c {
+	width: 78%;
+	background-color: #f5f6f7;
+	float: right;
+	padding: 10px;
+	border-radius: 3px;
+	position: relative;
+}
+
+
+.latest .comment-box .user-c:before {
+	content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 9px;
+    left: -18px;
+    border-style: solid;
+    border-color: transparent #f5f6f7  transparent transparent;
+    border-width: 9px;
+}
 
 
 /* End Dashboard Page */
@@ -281,10 +394,16 @@ a:hover {
     color: #7ec971;
 }
 
+.main-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;	
+}
+
 .main-table .btn {
-    padding: 2px 15px;
+    padding: 2px 10px;
     font-size: 12px;
-    border-radius: 50px;
+    border-radius: 3px;
 }
 
 
@@ -298,14 +417,14 @@ a:hover {
 }
 
 tbody tr:nth-child(even) td{
-	background-color: #EEE
+	background-color: #f4f4f4
 }
 .main-table td:last-child {
 	padding-left: 0;
 	padding-right: 0;
 }
 .main-table tr:first-of-type td { /* We can use thead */
-	background-color: #7f7e7e;
+	background-color: #967fcb;
 	color: #FFF;
 }
 

@@ -43,17 +43,19 @@
 										users 
 									ON
 										users.UserID = items.User_ID
-
+									ORDER BY Item_ID DESC
 								"); 
 
 			$stmt->execute(); // Execute the statement
 
 			$items = $stmt->fetchAll(); // Fetch all data
 
+			if (!empty($items)) {
+
 		?>
 			<!-- HEADING OF THE PAGE -->
 				<div class="table-responsive">
-					<table class="main-table text-center table table-bordered">
+					<table class="main-table text-center table">
 						<tr>
 							<td>#ID</td>
 							<td>Name</td>
@@ -71,8 +73,8 @@
 
 							echo "<tr>"; // START TAbLE ROW
 								echo "<td>" . $item['Item_ID'] . "</td>";
-								echo "<td>" . $item['Name'] . "</td>";
-								echo "<td>" . $item['Description'] . "</td>";
+								echo "<td>" . substr($item['Name'], 0, 20) . ' ...' ."</td>";
+								echo "<td>" . substr($item['Description'], 0, 25) . ' ...' . "</td>";
 								echo "<td>" . $item['Price'] . "</td>";
 								echo "<td>" . $item['Add_Date'] . "</td>";
 								echo "<td>" . $item['cat_name'] . "</td>";
@@ -99,10 +101,22 @@
 
 					</table>
 				</div>
+			</div>
+		<?php 
+			} else {
+
+			echo '<div class="container">';
+				echo "<div class='alert alert-info'> There is no items</div>";
+
+			echo '</div>';
+
+			}
+		?>
+			<div class="container">
 				<a class="btn btn-sm btn-primary" href="?do=Add"><i class='fa fa-plus'></i> new item</a>
 			</div>
-		
 		<?php
+
 		/*
 		========================
 		|  ADD NEW ITEMS PAGE   |
@@ -530,10 +544,67 @@
 						</div>
 					</div>
 				</form>
+
+
+				<!-- START Comments Area -->
+
+				<?php
+					$stmt = $con->prepare("SELECT comments.*, users.Username AS user_name
+											FROM comments
+											INNER JOIN users 
+											ON users.UserID = comments.c_user_id
+											WHERE c_item_id = ?");
+					$stmt->execute(array($itemid)); // Execute the statement
+					$rows = $stmt->fetchAll(); // Fetch all data
+
+
+					if(!empty($rows)) {
+				?>
+				<!-- HEADING OF THE PAGE -->
+				<div class="ehead"> <h1 class="text-center"><?php echo substr($item['Name'], 0, 25) ?> - Comments</h1></div>
+					<div class="table-responsive">
+						<table class="main-table text-center table table-bordered">
+							<tr>
+								<td>Comment</td>
+								<td>User name</td>
+								<td>Added date</td>
+								<td>Control</td>
+							</tr>
+
+							<?php
+
+							foreach($rows as $row) {
+
+								echo "<tr>"; // START TAbLE ROW
+									echo "<td>" . substr($row['c'], 0, 45) . ' ...' . "</td>";
+									echo "<td>" . $row['user_name'] . "</td>";
+									echo "<td>" . $row['c_date'] . "</td>";
+									
+									echo "<td>";
+										echo "<a href='comments.php?do=Edit&cid=" . $row['c_id'] . "'" . "class='btn btn-success'>";
+										echo "<i class='fa fa-edit'></i>Edit</a> ";
+
+										echo "<a href='comments.php?do=Delete&cid=" . $row['c_id'] . "'" . "class='btn btn-danger confirm'>";
+										echo "<i class='fa fa-close'></i>Delete</a> ";
+
+									// Case User is Not Activated yet ==> show Btn of Activation
+									if ($row['c_status'] == 0) {
+										echo
+											"<a href='?do=Approve&cid=" . $row['c_id'] . "'" . "class='btn btn-info activate'><i class='fa fa-check'></i>approve
+											</a>";
+									}
+									
+									echo "</td>";
+
+								echo "</tr>"; // END TAbLE ROW
+							}
+
+							?>
+
+						</table>
+					</div>
+				<?php } ?>
 			</div>
-
-
-
 
 
 			<?php } else { // ~ Show Error Message ~ No Id Found ~

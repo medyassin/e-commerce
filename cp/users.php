@@ -34,18 +34,21 @@
 				$query = 'AND RegStatus =0';
 			}
 
-			$stmt = $con->prepare("SELECT * FROM users WHERE GroupeID != 1 $query"); // Select all Users Expect Administrators
+			$stmt = $con->prepare("SELECT * FROM users WHERE GroupeID != 1 $query ORDER BY UserID DESC"); // Select all Users Expect Administrators
 			$stmt->execute(); // Execute the statement
 			$rows = $stmt->fetchAll(); // Fetch all data
+
+			if(!empty($rows)) {
 
 		?>
 			<!-- HEADING OF THE PAGE -->
 			<div class="ehead"> <h1 class="text-center">Users Manage Page</h1></div>
 			<div class="container">
 				<div class="table-responsive">
-					<table class="main-table text-center table table-bordered">
+					<table class="main-table text-center table">
 						<tr>
 							<td>#ID</td>
+							<td>Img</td>
 							<td>Username</td>
 							<td>Email</td>
 							<td>Full name</td>
@@ -59,6 +62,12 @@
 
 							echo "<tr>"; // START TAbLE ROW
 								echo "<td>" . $row['UserID'] . "</td>";
+
+								if($row['Image'] === NULL) {
+									echo "<td><img src='../data/uploads/avatar.png' alt='img' </td>";
+								} else {
+									echo "<td><img src='../data/uploads/" . $row['Image'] . "' alt='img' </td>";
+								}
 								echo "<td>" . $row['Username'] . "</td>";
 								echo "<td>" . $row['Email'] . "</td>";
 								echo "<td>" . $row['FullName'] . "</td>";
@@ -90,7 +99,14 @@
 				</div>
 				<a class="btn btn-sm btn-primary" href="?do=Add"><i class='fa fa-plus'></i> new user</a>
 			</div>
-		
+		<?php } else {
+
+			echo '<div class="container">';
+				$theMsg = "<div class='alert alert-info'> There is no users</div>";
+				redirectHome($theMsg, 'index.php', 2);
+			echo '</div>';
+
+		} ?>
 		<?php
 		
 		/*
@@ -106,7 +122,7 @@
 			<div class="ehead"> <h1 class="text-center">Add Users Page</h1></div> <!-- Heading -->
 			
 			<div class=container >
-				<form class="form-horizontal" action="?do=Insert" method="POST">
+				<form class="form-horizontal" action="?do=Insert" method="POST" enctype="multipart/form-data">
 
 				<!-- Start username field -->
 
@@ -144,19 +160,22 @@
 						<input type="text" name="fullname" class="form-control" required="required" placeholder="your full name">
 						</div>
 					</div>
-				<!-- Start Image field -->	
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Image link</label>
-						<div class="col-sm-10 col-md-4">
-						<input type="text" name="img" class="form-control" required="required" placeholder="Image Link">
-						</div>
-					</div>
+
 				<!-- Start RegStatus field -->	
 
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Status</label>
 						<div class="col-sm-10 col-md-4">
 						<input type="text" name="regstatus" class="form-control" required="required" placeholder="0 or 1">
+						</div>
+					</div>
+
+				<!-- Start RegStatus field -->	
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">User Image</label>
+						<div class="col-sm-10 col-md-4">
+						<input type="file" name="image" class="form-control" required="required" >
 						</div>
 					</div>
 
@@ -187,14 +206,27 @@
 			// Check if the User Access From a POST REQUEST
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+				// Get Image Info From the Form And Store it:
+
+				$imgName = $_FILES['image']['name'];
+				$imgSize = $_FILES['image']['size'];
+				$imgTmp  = $_FILES['image']['tmp_name'];
+				$imgType = $_FILES['image']['type'];
 				
+				$imgAllowedExt  = array("jpeg", "jpg", "png", "gif");
+
+				// Get Image Extension
+
+				$imgExtArr = explode('.', $imgName);
+				$imgExt = strtolower(end($imgExtArr));
+
 				// Get Datas from the FORM AND Store it;
 
 				$user = $_POST['username'];
 				$pass = $_POST['password'];
 				$email = $_POST['email'];
 				$full = $_POST['fullname'];
-				$img = $_POST['img'];
 				$reg = $_POST['regstatus']; // RegStatus
 
 
@@ -220,16 +252,34 @@
 					$formErrors[] = 'Full name can\'t be <strong>empty</strong>';
 				}
 
+				if (! empty($imgName) && ! in_array($imgExt, $imgAllowedExt)) {
+					$formErrors[] = 'This Extention is not <strong>Allowed</strong>';
+				}
+
+				if (empty($imgName)) {
+					$formErrors[] = 'You should chose an <strong>Image</strong>';
+				}
+
+				if ($imgSize > setSize(4)) {
+					$formErrors[] = 'You Passed the Allowed Size <strong>4 MB</strong>';
+				}
+
 				foreach($formErrors as $error) {
 					echo '<div class="alert alert-danger">' . $error ."</div>";
 				}
 
 				// Check if there is no error = $formErrors Array empty !
-
+				
 				if (empty($formErrors)) {
 
-					// Check If the User exist in Database
 
+					$image = rand(0,1000000) . '_' . $imgName;
+
+					move_uploaded_file($imgTmp, 'C:\XAMPP\htdocs\eCommerce\data\uploads\\' . $image);
+
+
+					// Check If the User exist in Database
+	
 					$check = checkItem("Username","users", $user);
 
 					if ($check != 1 ) {
@@ -244,7 +294,7 @@
 							'zpass'  => $hashPass,
 							'zemail' => $email,
 							'zname'  => $full,
-							'zimg'   => $img,
+							'zimg'   => $image,
 							'zreg'   => $reg
 
 						));
@@ -257,9 +307,9 @@
 						$theMsg = "<div class='alert alert-danger'> $user already registered, try another username</div>";
 						redirectHome($theMsg, 'back', 2);
 					}
-
 				}
-
+				
+	
 			echo '</div>';
 
 			} else {
